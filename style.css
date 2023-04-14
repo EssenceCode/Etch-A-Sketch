@@ -8,13 +8,24 @@ body {
     gap: 10px;
 }
 
+.title {
+    margin: 0px;
+    padding: 0px;
+    font-family: Serif, Sans-serif,Verdana;
+    font-size: 50px;
+    font-style: italic;
+    border: 1px solid;
+    color: violet;
+    background: gold;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     height: 480px;
     width: 480px;
-    border: 2px solid black ;
+    border: 5px solid gold;
     
 }
 
@@ -35,4 +46,17 @@ body {
 
 .color {
     background-color: plum;
+}
+
+.resize-button {
+    font-size: 15px;
+    padding: 5px 5px;
+    color: black;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid green;
+    transition-duration: 0.4s;
+}
+.resize-button:hover {
+    background-color: green;
 }
