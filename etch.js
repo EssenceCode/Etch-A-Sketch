@@ -18,11 +18,11 @@ function divCreate(num) {
 };  
   };
 };
-//divCreate(16);
+divCreate(16);
 // create a button div to append the button inside
 const containerBtn = document.createElement('div');
 containerBtn.classList.toggle('button-container');
-document.body.insertBefore(containerBtn,container);
+document.body.appendChild(containerBtn);
 
 // create an button that will send the user a popup
 // asking for the number of squares per side for the new grid. 
@@ -35,15 +35,25 @@ containerBtn.appendChild(resizeBtn);
 function sizeDiv(e) {
   let user = Number(prompt('enter a number equal or less than 100'));
   //console.log(e.target);
-  console.log(typeof user);
+  //console.log(typeof user);
   if (user <= 100) {
+    removeNode();
     divCreate(user);
   }
-  else {
+  else if (user >= 100) {
     alert("only enter a number equal or less than 100");
+  } 
+  else if (!Number.isInteger(user)) {
+    alert('enter a valid number');
   }
-  // need to add an if statement to remove the child nodes
+  // remove the old nodes
+  
+  
+};
+function removeNode() {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
 }
-
 
 resizeBtn.addEventListener('click', sizeDiv);
