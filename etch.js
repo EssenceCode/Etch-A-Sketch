@@ -46,14 +46,33 @@ function sizeDiv(e) {
   else if (!Number.isInteger(user)) {
     alert('enter a valid number');
   }
-  // remove the old nodes
-  
-  
 };
 function removeNode() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
 }
-
 resizeBtn.addEventListener('click', sizeDiv);
+
+// create a button for change color
+const rgbBtn = document.createElement('button');
+rgbBtn.classList.toggle('rgb-button');
+rgbBtn.textContent = 'rgb';
+containerBtn.appendChild(rgbBtn);
+
+// create a function that will generate a random color
+function colorRandom() {
+  let array = []
+  for (let i = 0; i < 3; i++) {
+    let rgb = Math.floor(Math.random() * 256);
+    array.push(rgb);
+    //console.log(array);
+    //console.log(Array.isArray(array));
+    const block = document.querySelectorAll('.block')
+    //console.log(block);
+    block.forEach(color => color.addEventListener('mouseover', (e) => {
+      e.target.style.backgroundColor = `rgb(${array[0]}, ${array[1]}, ${array[2]})`; 
+    }))
+  }
+}
+rgbBtn.addEventListener('click', colorRandom);
