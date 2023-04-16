@@ -28,7 +28,7 @@ document.body.appendChild(containerBtn);
 // asking for the number of squares per side for the new grid. 
 const resizeBtn = document.createElement('button');
 resizeBtn.classList.toggle('resize-button')
-resizeBtn.textContent = 'resize';
+resizeBtn.textContent = 'change grid size';
 containerBtn.appendChild(resizeBtn);
 
 // create a function that will prompt the user to input a number to size the div
@@ -57,22 +57,35 @@ resizeBtn.addEventListener('click', sizeDiv);
 // create a button for change color
 const rgbBtn = document.createElement('button');
 rgbBtn.classList.toggle('rgb-button');
-rgbBtn.textContent = 'rgb';
+rgbBtn.textContent = 'change color';
 containerBtn.appendChild(rgbBtn);
+rgbBtn.addEventListener('click', colorRandom)
 
 // create a function that will generate a random color
 function colorRandom() {
-  let array = []
-  for (let i = 0; i < 3; i++) {
-    let rgb = Math.floor(Math.random() * 256);
-    array.push(rgb);
-    //console.log(array);
-    //console.log(Array.isArray(array));
-    const block = document.querySelectorAll('.block')
-    //console.log(block);
-    block.forEach(color => color.addEventListener('mouseover', (e) => {
-      e.target.style.backgroundColor = `rgb(${array[0]}, ${array[1]}, ${array[2]})`; 
-    }))
-  }
+  let array = [];
+  const r =  Math.floor(Math.random() * 256);
+  const g =  Math.floor(Math.random() * 256);
+  const b =  Math.floor(Math.random() * 256);
+  array.push(r,g,b);
+  const block = document.querySelectorAll('.block');
+  //console.log(block)
+  block.forEach(color => color.addEventListener('mouseover', (e) => {
+    e.target.style.background = `rgb(${array[0]}, ${array[1]}, ${array[2]})`; 
+  }))
+  //return arr;
 }
-rgbBtn.addEventListener('click', colorRandom);
+
+// create a function to delete the colors to create a white canvas
+function removeColor() {
+  document.querySelectorAll('.block').forEach(block => {
+   block.classList.add('remove-color')
+   block.removeAttribute('style');
+  });
+}
+// create a reset button
+const resetBtn = document.createElement('button');
+resetBtn.classList.toggle('reset-button');
+resetBtn.textContent = 'reset button';
+containerBtn.appendChild(resetBtn);
+resetBtn.addEventListener('click', removeColor);
