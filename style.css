@@ -27,8 +27,8 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 600px;
-    width: 600px;
+    height: 100%;
+    width: 100%;
     border: 5px solid gold;
     background: white;
 }
@@ -48,13 +48,13 @@ body {
     flex: 1;
 }
 
-.color {
+/* .color {
     background-color: plum;
-}
+} div original color */
 
-.remove-color {
+/* .remove-color {
     background-color: white;
-}
+}css to remove class color */
 
 .button-container {
     display: flex;
