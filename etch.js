@@ -11,7 +11,8 @@ function divCreate(num) {
      const block = document.createElement('div');
      block.classList.toggle('block');
      block.addEventListener('mouseover', (e) => {
-        e.target.classList.toggle('color');
+        // e.target.classList.add('color');
+        e.target.setAttribute('style', 'background: plum;');  
      });   
 
      row.appendChild(block);   
@@ -33,9 +34,9 @@ containerBtn.appendChild(resizeBtn);
 
 // create a function that will prompt the user to input a number to size the div
 function sizeDiv(e) {
-  let user = Number(prompt('enter a number equal or less than 100'));
+  let user = parseInt(prompt('enter a number equal or less than 100'));
   //console.log(e.target);
-  //console.log(typeof user);
+  console.log(user);
   if (user <= 100) {
     removeNode();
     divCreate(user);
@@ -55,11 +56,11 @@ function removeNode() {
 resizeBtn.addEventListener('click', sizeDiv);
 
 // create a button for change color
-const rgbBtn = document.createElement('button');
-rgbBtn.classList.toggle('rgb-button');
-rgbBtn.textContent = 'change color';
-containerBtn.appendChild(rgbBtn);
-rgbBtn.addEventListener('click', colorRandom)
+const colorBtn = document.createElement('button');
+colorBtn.classList.toggle('rgb-button');
+colorBtn.textContent = 'change color';
+containerBtn.appendChild(colorBtn);
+colorBtn.addEventListener('click', colorRandom)
 
 // create a function that will generate a random color
 function colorRandom() {
@@ -79,7 +80,7 @@ function colorRandom() {
 // create a function to delete the colors to create a white canvas
 function removeColor() {
   document.querySelectorAll('.block').forEach(block => {
-   block.classList.add('remove-color')
+  //  block.classList.add('remove-color')
    block.removeAttribute('style');
   });
 }
