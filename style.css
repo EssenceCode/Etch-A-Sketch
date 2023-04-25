@@ -65,7 +65,8 @@ body {
 
 .resize-button,
 .rgb-button,
-.reset-button {
+.reset-button,
+.erase-button {
     font-size: 25px;
     padding: 5px 5px;
     color: pink;
@@ -76,6 +77,7 @@ body {
 }
 .resize-button:hover,
 .rgb-button:hover,
-.reset-button:hover {
+.reset-button:hover,
+.erase-button:hover {
     background-color: blue;
 }
