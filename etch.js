@@ -29,14 +29,15 @@ document.body.appendChild(containerBtn);
 // asking for the number of squares per side for the new grid. 
 const resizeBtn = document.createElement('button');
 resizeBtn.classList.toggle('resize-button')
-resizeBtn.textContent = 'change grid size';
+resizeBtn.textContent = 'Change Size';
 containerBtn.appendChild(resizeBtn);
+resizeBtn.addEventListener('click', sizeDiv);
 
 // create a function that will prompt the user to input a number to size the div
 function sizeDiv(e) {
   let user = parseInt(prompt('enter a number equal or less than 100'));
   //console.log(e.target);
-  console.log(user);
+  // console.log(user);
   if (user <= 100) {
     removeNode();
     divCreate(user);
@@ -45,7 +46,7 @@ function sizeDiv(e) {
     alert("only enter a number equal or less than 100");
   } 
   else if (!Number.isInteger(user)) {
-    alert('enter a valid number');
+    return "ERROR";
   }
 };
 function removeNode() {
@@ -53,12 +54,11 @@ function removeNode() {
     container.removeChild(container.firstChild);
   }
 }
-resizeBtn.addEventListener('click', sizeDiv);
 
 // create a button for change color
 const colorBtn = document.createElement('button');
 colorBtn.classList.toggle('rgb-button');
-colorBtn.textContent = 'change color';
+colorBtn.textContent = 'Change Color';
 containerBtn.appendChild(colorBtn);
 colorBtn.addEventListener('click', colorRandom)
 
@@ -87,6 +87,19 @@ function removeColor() {
 // create a reset button
 const resetBtn = document.createElement('button');
 resetBtn.classList.toggle('reset-button');
-resetBtn.textContent = 'reset button';
+resetBtn.textContent = 'Clear';
 containerBtn.appendChild(resetBtn);
 resetBtn.addEventListener('click', removeColor);
+// create a function to erase things
+function eraseColor (e) {
+  document.querySelectorAll('.block').forEach(erase => erase.addEventListener('mouseover', (e) => {
+    e.target.setAttribute('style', 'background: white;');
+  }) );
+};
+
+// create a button to erase the colors
+const eraseBtn = document.createElement('button');
+eraseBtn.classList.toggle('erase-button');
+eraseBtn.textContent = 'Eraser';
+containerBtn.appendChild(eraseBtn);
+eraseBtn.addEventListener('click', eraseColor);
